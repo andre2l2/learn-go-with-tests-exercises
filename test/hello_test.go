@@ -5,20 +5,31 @@ import (
 	"testing"
 )
 
-func TestHello(t *testing.T) {
-	result := mainapp.Hello()
-	expect := "Hello!"
-
-	if result != expect {
-		t.Errorf("The result '%s' expect '%s'", result, expect)
-	}
-}
-
 func TestCustomHello(t *testing.T) {
-	result := mainapp.CustomHello("Andre")
-	expect := "Hello, Andre!"
+	t.Run("Say hello for peoples", func(t *testing.T) {
+		got := mainapp.CustomHello("Andre", "")
+		want := "Hello, Andre!"
 
-	if result != expect {
-		t.Errorf("The result '%s' expect '%s'", result, expect)
-	}
+		if got != want {
+			t.Errorf("The result '%s' expect '%s'", got, want)
+		}
+	})
+
+	t.Run("Say hello for peoples with default", func(t *testing.T) {
+		got := mainapp.CustomHello("", "")
+		want := "Hello!"
+
+		if got != want {
+			t.Errorf("The result '%s' expect '%s'", got, want)
+		}
+	})
+
+	t.Run("Say hello in spanish", func(t *testing.T) {
+		got := mainapp.CustomHello("Andre", "spanish")
+		want := "Hola, Andre!"
+
+		if got != want {
+			t.Errorf("The result '%s' expect '%s'", got, want)
+		}
+	})
 }
