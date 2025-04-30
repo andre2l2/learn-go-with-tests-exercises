@@ -1,15 +1,21 @@
 package mainapp
 
-const prefixHello string = "Hello"
+const prefixEnglishHello string = "Hello"
+const prefixSpanishHello string = "Hola"
+const prefixFrenchHello string = "Bonjour"
 
 func CustomHello(name string, language string) string {
 	if name == "" {
-		return prefixHello + "!"
+		return prefixEnglishHello + "!"
 	}
 
 	if language == "spanish" {
-		return "Hola, " + name + "!"
+		return prefixSpanishHello + ", " + name + "!"
 	}
 
-	return prefixHello + ", " + name + "!"
+	if language == "french" {
+		return prefixFrenchHello + ", " + name + "!"
+	}
+
+	return prefixEnglishHello + ", " + name + "!"
 }
