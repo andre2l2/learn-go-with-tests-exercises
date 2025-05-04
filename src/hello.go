@@ -9,13 +9,17 @@ func CustomHello(name string, language string) string {
 		return prefixEnglishHello + "!"
 	}
 
-	if language == "spanish" {
-		return prefixSpanishHello + ", " + name + "!"
+	switch language {
+	case "spanish":
+		return parseWithPrefix(prefixSpanishHello, name)
+	case "french":
+		return parseWithPrefix(prefixFrenchHello, name)
 	}
 
-	if language == "french" {
-		return prefixFrenchHello + ", " + name + "!"
-	}
+	return parseWithPrefix(prefixEnglishHello, name)
+}
 
-	return prefixEnglishHello + ", " + name + "!"
+func parseWithPrefix(prefix string, name string) (value string) {
+	value = prefix + ", " + name + "!"
+	return value
 }
