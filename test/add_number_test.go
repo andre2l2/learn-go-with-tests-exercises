@@ -14,4 +14,14 @@ func TestAddNumber(t *testing.T) {
 			t.Errorf("Expect '%d', recive '%d'", want, got)	
 		}
 	})
+
+	t.Run("Add 1 + 5 = 6", func(t *testing.T) {
+		got := mainapp.AddNumber(1, 5)
+		want := 6
+
+		if got != want {
+			t.Errorf("Expect '%d', recive '%d'", want, got)
+		}
+	})
 }
+

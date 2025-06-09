@@ -1,0 +1,11 @@
+version: "3"
+
+tasks:
+  install_tools:
+    cmds:
+      - go install github.com/go-task/task/v3/cmd/task@latest
+      - go install gotest.tools/gotestsum@latest
+
+  test:
+    cmds:
+      - gotestsum --format testname
